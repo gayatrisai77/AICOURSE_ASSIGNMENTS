@@ -1,0 +1,30 @@
+
+Dynamic Obstacle Environment 
+
+
+
+problem:::finding out the optimal path in a dynamic obstacles environment?
+
+
+
+In a real-world scenario where obstacles appear, disappear, or move dynamically, a static 
+planning algorithm like standard A* will be inefficient because it has to recalculate the 
+entire path from scratch every time an obstacle blocks its route.
+
+
+Algorithms recommended/to be used
+for such cases are:
+
+
+1. D* Lite (Dynamic A* Lite): 
+   This is the industry standard heuristic search algorithm for navigation in unknown or 
+   changing terrain. It plans backwards from the goal to the start. 
+   When the UGV's sensors detect a new obstacle, D* Lite only updates the heuristic costs 
+   of the specific nodes affected by the change, reusing the previously computed map. 
+   This makes it extraordinarily efficient compared to recalculating everything.
+
+2. A* with Re-planning:
+   In environments where obstacle changes are infrequent, the UGV can rely on standard 
+   A* to compute a path. As it moves step-by-step, it scans ahead. If an unexpected 
+   obstacle appears on its planned trajectory, it marks the obstacle on its internal grid 
+   map and triggers a brand-new A* search from its *current* coordinates to the goal.
