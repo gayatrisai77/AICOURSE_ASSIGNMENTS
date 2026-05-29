@@ -1,0 +1,23 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX : <http://example.org/tourism#>
+
+1. Get all tourist places
+
+SELECT ?place
+WHERE {
+  ?place rdf:type :Place .
+}
+
+2. Get all foods
+
+SELECT ?food
+WHERE {
+  ?food rdf:type :Food .
+}
+
+3. Get all place-food relationships
+
+SELECT ?place ?food
+WHERE {
+  ?place :hasFood ?food .
+}
